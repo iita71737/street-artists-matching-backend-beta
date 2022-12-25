@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Validator;
 
 class CartItemController extends Controller
 {
+    public function index()
+    {
+        //
+    }
+    
     public function store(Request $request)
     {
         $messages = [

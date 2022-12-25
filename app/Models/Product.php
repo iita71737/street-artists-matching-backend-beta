@@ -10,7 +10,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = [''];
 
     #  php artisan storage:link
     public function getImageUrlAttribute()

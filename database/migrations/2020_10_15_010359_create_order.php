@@ -15,16 +15,15 @@ class CreateOrder extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('cart_id');
-            $table->boolean('is_shipped');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('cart_id')->constrained('carts');
+            $table->boolean('is_shipped')->default(0);
             $table->timestamps();
         });
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id');
-            $table->foreignId('order_id');
-            $table->integer('price');
+            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('order_id')->constrained('orders');
             $table->timestamps();
         });
     }
@@ -36,7 +35,7 @@ class CreateOrder extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
-        Schema::dropIfExists('order_items');
+        Schema::dropConstrainedForeignId('orders');
+        Schema::dropConstrainedForeignId('order_items');
     }
 }

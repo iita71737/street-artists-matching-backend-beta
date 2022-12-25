@@ -9,7 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = [''];
     protected $cast = [
         'created_at' => 'datetime',
     ];

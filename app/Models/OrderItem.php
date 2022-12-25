@@ -9,7 +9,7 @@ class OrderItem extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = [''];
 
     public function product()
     {

@@ -30,7 +30,7 @@ class Cart extends Model
         $result = DB::transaction(function () {
             foreach ($this->cartItems as $cartItem) {
                 $product = $cartItem->product;
-                if ($product->quantity < $cartItem->quantity) {
+                if (!$product->checkQuantity($cartItem->quantity)) {
                     return $product->title.' 數量不足';
                 }
             }
